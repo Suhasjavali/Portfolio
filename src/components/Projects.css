@@ -1,0 +1,448 @@
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --bg: #0b1220;
+  --bg-accent: #0f172a;
+  --text: #eef2ff;
+  --muted: #cbd5e1;
+  --brand: #22d3ee;
+  --brand-2: #7c3aed;
+  --radius: 20px;
+  --shadow: 0 20px 60px rgba(0,0,0,.4);
+  --card-bg: rgba(255,255,255,.03);
+  --card-border: rgba(255,255,255,.08);
+}
+
+/* Section container */
+.projects {
+  position: relative;
+  isolation: isolate;
+  border-radius: 20px;
+  padding: clamp(5rem, 8vw, 8rem) 1.5rem clamp(4rem, 6vw, 6rem);
+  background:
+    radial-gradient(1400px 600px at 15% 20%, rgba(34,211,238,.12), transparent 80%),
+    radial-gradient(1000px 500px at 85% 40%, rgba(124,58,237,.12), transparent 70%),
+    radial-gradient(800px 400px at 50% 80%, rgba(34,211,238,.08), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-accent) 100%);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  margin: 10rem 4rem;
+}
+
+/* Floating particles effect */
+.projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(34,211,238,.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(124,58,237,.3), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(34,211,238,.2), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(124,58,237,.2), transparent);
+  background-repeat: repeat;
+  background-size: 150px 100px;
+  animation: float 25s linear infinite;
+  opacity: 1;
+  z-index: 0;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-100px); }
+}
+
+/* Main container */
+.projects__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Heading */
+.projects__heading {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.1;
+  margin: 0 0 3rem;
+  font-weight: 800;
+  letter-spacing: -.5px;
+  text-align: center;
+  position: relative;
+  color: var(--text);
+}
+
+.heading-accent {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  border-radius: 2px;
+  animation: accentGrow 1.2s ease 0.5s forwards;
+}
+
+@keyframes accentGrow {
+  to { width: 160px; }
+}
+
+/* Projects content */
+.projects__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Project card */
+.project-card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 0;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+  transform: translateY(50px) scale(0.95);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(34,211,238,.2);
+  box-shadow: 
+    0 25px 80px rgba(0,0,0,.5),
+    0 0 0 1px rgba(34,211,238,.1);
+}
+
+/* Code Editor Styling */
+.code-editor {
+  background: #1e1e1e;
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+}
+
+.editor-header {
+  background: #2d2d2d;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #404040;
+}
+
+.window-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.control.red { background: #ff5f56; }
+.control.orange { background: #ffbd2e; }
+.control.green { background: #27ca3f; }
+
+.control:hover {
+  transform: scale(1.1);
+}
+
+.file-name {
+  color: #d4d4d4;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+.code-content {
+  padding: 1.5rem;
+  background: #1e1e1e;
+}
+
+.code-block {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #d4d4d4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Syntax Highlighting */
+.keyword {
+  color: #569cd6;
+  font-weight: 600;
+}
+
+.variable {
+  color: #9cdcfe;
+  font-weight: 500;
+}
+
+.property {
+  color: #9cdcfe;
+  font-weight: 500;
+}
+
+.string {
+  color: #ce9178;
+}
+
+/* Project header */
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.project-title-section {
+  flex: 1;
+}
+
+.project-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+  letter-spacing: -.2px;
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .project-title {
+  color: var(--brand);
+}
+
+.project-date {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.project-role {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(34,211,238,.3);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-role {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(34,211,238,.4);
+}
+
+/* Project tools */
+.project-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.tool-tag {
+  background: rgba(255,255,255,.08);
+  color: var(--text);
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  border: 1px solid rgba(255,255,255,.1);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.tool-tag:hover {
+  background: rgba(34,211,238,.15);
+  border-color: rgba(34,211,238,.3);
+  color: var(--brand);
+  transform: translateY(-2px);
+}
+
+/* Project description */
+.project-description {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1rem;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .project-description {
+  color: var(--text);
+}
+
+/* Glow effect */
+.project-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(34,211,238,.08) 0%,
+    rgba(124,58,237,.05) 30%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.project-card:hover .project-glow {
+  opacity: 1;
+}
+
+/* Animation for projects appearing */
+.projects.animate-in .project-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.projects.animate-in .project-card:nth-child(1) {
+  animation: projectSlideIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+}
+
+.projects.animate-in .project-card:nth-child(2) {
+  animation: projectSlideIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards;
+}
+
+@keyframes projectSlideIn {
+  0% {
+    transform: translateY(50px) scale(0.95);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-5px) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .projects {
+    padding: clamp(3rem, 6vw, 5rem) 1rem;
+    margin: 5rem 1rem;
+  }
+  
+  .project-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+  }
+  
+  .project-card {
+    padding: 2rem;
+  }
+  
+  .project-tools {
+    gap: 0.5rem;
+  }
+  
+  .tool-tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .code-content {
+    padding: 1rem;
+  }
+  
+  .code-block {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  
+  .editor-header {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .file-name {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    margin: 3rem 0.5rem;
+  }
+  
+  .project-card {
+    padding: 1.5rem;
+  }
+  
+  .project-title {
+    font-size: 1.3rem;
+  }
+  
+  .project-description {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .code-content {
+    padding: 0.75rem;
+  }
+  
+  .code-block {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+  
+  .editor-header {
+    padding: 0.5rem;
+  }
+  
+  .control {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .projects::before,
+  .project-card,
+  .project-role,
+  .tool-tag,
+  .heading-accent {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .project-card {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

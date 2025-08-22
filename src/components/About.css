@@ -1,0 +1,375 @@
+/* Import a crisp, modern font with good readability */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap");
+
+:root {
+  --bg: #0b1220;
+  --bg-accent: #0f172a;
+  --text: #eef2ff;
+  --muted: #cbd5e1;
+  --brand: #22d3ee;
+  --brand-2: #7c3aed;
+  --radius: 20px;
+  --shadow: 0 20px 60px rgba(0,0,0,.4);
+  --card-bg: rgba(255,255,255,.03);
+  --card-border: rgba(255,255,255,.08);
+}
+
+/* Section container with enhanced gradient backdrop */
+.about {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(5rem, 8vw, 8rem) 1.5rem clamp(4rem, 6vw, 6rem);
+  background:
+    radial-gradient(1400px 600px at 15% 20%, rgba(34,211,238,.12), transparent 80%),
+    radial-gradient(1000px 500px at 85% 40%, rgba(124,58,237,.12), transparent 70%),
+    radial-gradient(800px 400px at 50% 80%, rgba(34,211,238,.08), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-accent) 100%);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+/* Floating particles effect */
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(34,211,238,.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(124,58,237,.3), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(34,211,238,.2), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(124,58,237,.2), transparent);
+  background-repeat: repeat;
+  background-size: 150px 100px;
+  animation: float 20s linear infinite;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-100px); }
+}
+
+/* Main container */
+.about__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Enhanced heading with animated accent */
+.about__heading {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.1;
+  margin: 0 0 3rem;
+  font-weight: 800;
+  letter-spacing: -.5px;
+  text-align: center;
+  position: relative;
+  color: var(--text);
+}
+
+.heading-accent {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  border-radius: 2px;
+  animation: accentGrow 1.2s ease 0.5s forwards;
+}
+
+@keyframes accentGrow {
+  to { width: 120px; }
+}
+
+/* Cards container */
+.about__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Individual card styling */
+.about-card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+  transform: translateY(40px) scale(0.95);
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(34,211,238,.05) 0%, 
+    rgba(124,58,237,.05) 50%, 
+    rgba(34,211,238,.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.about-card:hover::before {
+  opacity: 1;
+}
+
+.about-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(34,211,238,.2);
+  box-shadow: 
+    0 25px 80px rgba(0,0,0,.5),
+    0 0 0 1px rgba(34,211,238,.1);
+}
+
+/* Card icon */
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.3));
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.about-card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Icon image styling */
+.icon-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.3));
+  transition: all 0.3s ease;
+}
+
+.about-card:hover .icon-image {
+  filter: drop-shadow(0 6px 12px rgba(34,211,238,.4));
+}
+
+/* Card title */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--text);
+  letter-spacing: -.2px;
+  transition: color 0.3s ease;
+}
+
+.about-card:hover .card-title {
+  color: var(--brand);
+}
+
+/* Card content */
+.card-content {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 1rem;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.about-card:hover .card-content {
+  color: var(--text);
+}
+
+/* Glow effect */
+.card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(34,211,238,.1) 0%,
+    rgba(124,58,237,.05) 30%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.about-card:hover .card-glow {
+  opacity: 1;
+}
+
+/* Contact info section */
+.about__contact-info {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.contact-info-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--text);
+  letter-spacing: -.2px;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.contact-icon-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.contact-icon-link:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand);
+  background: rgba(34,211,238,.05);
+  box-shadow: 0 10px 30px rgba(34,211,238,.2);
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+  transition: all 0.3s ease;
+}
+
+.contact-icon-link:hover .contact-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(34,211,238,.4));
+}
+
+.icon-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.contact-icon-link:hover .icon-label {
+  color: var(--brand);
+}
+
+/* Animation classes for scroll trigger */
+.about-card.animate-in {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.about-card:nth-child(1).animate-in {
+  animation: cardSlideIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.about-card:nth-child(2).animate-in {
+  animation: cardSlideIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+}
+
+@keyframes cardSlideIn {
+  0% {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-5px) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about {
+    padding: clamp(3rem, 6vw, 5rem) 1rem;
+  }
+  
+  .about__cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .about-card {
+    padding: 2rem;
+  }
+  
+  .card-icon {
+    font-size: 2.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.3rem;
+  }
+  
+  .contact-icons {
+    gap: 1rem;
+  }
+  
+  .contact-icon-link {
+    min-width: 80px;
+    padding: 0.75rem;
+  }
+  
+  .contact-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .icon-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .about::before,
+  .about-card,
+  .card-icon,
+  .heading-accent {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .about-card {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

@@ -1,0 +1,106 @@
+/* App.css */
+
+/* Reset margins & make sure body takes full height */
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Background with floating grid */
+.background {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #0f0c29, #302b63, #24243e);
+  overflow: hidden;
+  position: relative;
+  padding-top: 80px; /* Account for fixed navbar height on desktop */
+}
+
+/* Responsive padding for different navbar heights */
+@media (max-width: 768px) {
+  .background {
+    padding-top: 65px; /* Match navbar height on tablets */
+  }
+}
+
+@media (max-width: 640px) {
+  .background {
+    padding-top: 60px; /* Match navbar height on small tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .background {
+    padding-top: 55px; /* Match navbar height on mobile */
+  }
+}
+
+@media (max-width: 400px) {
+  .background {
+    padding-top: 50px; /* Match navbar height on small mobile */
+  }
+}
+
+@media (max-width: 360px) {
+  .background {
+    padding-top: 50px; /* Match navbar height on very small mobile */
+  }
+}
+
+/* Grid effect */
+.background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 70px 70px;
+  animation: floatingGrid 8s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes floatingGrid {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 20px 20px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Section spacing */
+.background > * {
+  margin-bottom: 0;
+}
+
+/* Ensure proper spacing between sections */
+.background > *:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+/* Content styling */
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  padding-top: 20vh;
+}
+
+.about {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  border-radius: 20px;
+  padding: auto;
+  background-color: #0f0c29;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+}
