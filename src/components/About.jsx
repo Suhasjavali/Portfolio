@@ -77,27 +77,23 @@ export default function About() {
         <div className="about__contact-info">
           {/* <h3 className="contact-info-title">Let's Connect</h3> */}
           <div className="contact-icons">
-             <a href="https://leetcode.com/u/suhas_javali/" target="_blank" rel="noopener noreferrer" className="contact-icon-link">
-              <img src="/contact/leet.png" alt="GitHub" className="contact-icon" />
-              {/* <span className="icon-label">Leetcode</span> */}
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="contact-icon-link">
-              <img src="/contact/github.png" alt="GitHub" className="contact-icon" />
-              {/* <span className="icon-label">GitHub</span> */}
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="contact-icon-link">
-              <img src="/contact/linkedin.webp" alt="LinkedIn" className="contact-icon" />
-              {/* <span className="icon-label">LinkedIn</span> */}
-            </a>
-            {/* <a href="mailto:your.email@example.com" className="contact-icon-link">
-              <img src="/contact/gmail.png" alt="Email" className="contact-icon" />
-              <span className="icon-label">Email</span>
-            </a> */}
-              <a href="https://www.youtube.com/@suhas_javali/videos" target="_blank" rel="noopener noreferrer" className="contact-icon-link">
-              <img src="/contact/yt.png" alt="Youtube" className="contact-icon" />
-              {/* <span className="icon-label">LinkedIn</span> */}
-            </a>
-          </div>
+  <a href="https://leetcode.com/u/suhas_javali/" target="_blank" rel="noopener noreferrer" className="contact-icon-link">
+    <img src="/contact/leet.png" alt="LeetCode profile of Suhas Javali" className="contact-icon" />
+  </a>
+
+  <a href="https://github.com/suhasjavali" target="_blank" rel="noopener noreferrer" className="contact-icon-link">
+    <img src="/contact/github.png" alt="GitHub profile of Suhas Javali" className="contact-icon" />
+  </a>
+
+  <a href="https://linkedin.com/in/suhas-javali" target="_blank" rel="noopener noreferrer" className="contact-icon-link">
+    <img src="/contact/linkedin.webp" alt="LinkedIn profile of Suhas Javali" className="contact-icon" />
+  </a>
+
+  <a href="https://www.youtube.com/@suhas_javali/videos" target="_blank" rel="noopener noreferrer" className="contact-icon-link">
+    <img src="/contact/yt.png" alt="YouTube channel of Suhas Javali" className="contact-icon" />
+  </a>
+</div>
+
         </div>
       </div>
     </section>
