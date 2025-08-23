@@ -61,6 +61,18 @@ export default function About() {
           </div>
         </div>
 
+        {/* Resume button section */}
+        <div className="about__resume-section">
+          <a 
+            href="https://drive.google.com/file/d/1Q-Rb0EIVOIqckeSNIAIEgyIEqZW7sXzc/view?usp=sharing" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="resume-button"
+          >
+            <span className="resume-button-text">View Resume</span>
+          </a>
+        </div>
+
         {/* Additional info section with contact icons */}
         <div className="about__contact-info">
           {/* <h3 className="contact-info-title">Let's Connect</h3> */}
